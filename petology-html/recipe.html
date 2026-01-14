@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <title>GreenBite - 10 Recetas Vegetarianas</title>
+
+  <link rel="stylesheet" type="text/css" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
+  
+  <style>
+    /* Estilos de la plantilla original adaptados */
+    body { font-family: 'Poppins', sans-serif; background-color: #fcfcfc; }
+    .hero_area { background-color: #f8f9fa; border-bottom: 1px solid #eee; }
+    .custom_nav-container .nav-link { color: #333; font-weight: 500; }
+    
+    /* Buscador */
+    .search_section { padding: 60px 0; background: #e9f5ec; text-align: center; }
+    .search_box { max-width: 600px; margin: 0 auto; display: flex; gap: 10px; }
+    .search_box input { border-radius: 30px; padding: 10px 25px; border: 1px solid #ddd; flex-grow: 1; }
+    .search_box button { border-radius: 30px; background-color: #5E936C; color: white; border: none; padding: 10px 30px; }
+
+    /* Tarjetas de Recetas */
+    .recipe_card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      transition: 0.3s;
+      overflow: hidden;
+      height: 100%;
+    }
+    .recipe_card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(58, 24, 211, 0.2); }
+    .recipe_card img { height: 180px; object-fit: cover; }
+    .badge-type { position: absolute; top: 10px; right: 10px; background: #5E936C; color: white; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; }
+    
+    /* Modal Personalizado */
+    .modal-header { background-color: #5E936C; color: white; border-radius: 15px 15px 0 0; }
+    .recipe-meta { color: #5E936C; font-size: 0.9rem; margin-bottom: 15px; display: block; }
+  </style>
+</head>
+
+<body>
+  <div class="hero_area">
+    <header class="header_section">
+      <div class="container-fluid">
+        <nav class="navbar navbar-expand-lg custom_nav-container">
+          <a class="navbar-brand" href="index.html">
+            <span style="color: #5E936C; font-weight: bold; font-size: 24px;">VegChoice Recipes</span>
+          </a>
+         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
+              <ul class="navbar-nav  ">
+                <li class="nav-item active">
+                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+                </li>
+                               <li class="nav-item">
+                  <a class="nav-link" href="game.html">Juegos</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="recipe.html"> Recetas </a>
+                </li>
+              </ul>
+              
+            </div>
+        </nav>
+      </div>
+    </header>
+  </div>
+
+  <section class="search_section">
+    <div class="container">
+      <h2 class="mb-4">¿Qué te apetece cocinar hoy?</h2>
+      <div class="search_box">
+        <input type="text" id="recipeInput" placeholder="Busca por nombre o ingrediente..." onkeyup="searchRecipe()">
+        <button onclick="searchRecipe()">Buscar</button>
+      </div>
+    </div>
+  </section>
+
+  <div class="container layout_padding">
+    <div class="row" id="recipeGrid">
+      </div>
+  </div>
+
+  <div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content" style="border-radius: 15px;">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalTitle">Nombre de la Receta</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true" style="color: white;">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="row">
+            <div class="col-md-5">
+              <img src="" id="modalImg" class="img-fluid rounded mb-3" alt="Receta">
+              <span id="modalMeta" class="recipe-meta"></span>
+            </div>
+            <div class="col-md-7">
+              <h6><strong>Ingredientes:</strong></h6>
+              <ul id="modalIngredients"></ul>
+              <hr>
+              <h6><strong>Preparación:</strong></h6>
+              <p id="modalSteps"></p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
+
+  <script>
+    const recipes = [
+      {
+        title: "Tacos de Coliflor",
+        desc: "Crujientes y picantes, perfectos para cenas rápidas.",
+        img: "images/recipe-1.png", 
+        type: "Vegano",
+        meta: "⏱ 25 min | Fácil",
+        ingredients: ["1 coliflor pequeña", "Tortillas de maíz", "Salsa Buffalo", "Aguacate", "Cilantro"],
+        steps: "Corta la coliflor en trozos pequeños, hornéala con salsa buffalo a 200°C por 20 min. Sirve en tortillas con aguacate fresco."
+      },
+      {
+        title: "Lasaña de Espinacas",
+        desc: "Capas de sabor con queso ricotta y espinacas frescas.",
+        img: "images/recipe-2.png", 
+        type: "Vegetariano",
+        meta: "⏱ 45 min | Media",
+        ingredients: ["Placas de pasta", "500g Espinacas", "Ricotta", "Salsa de tomate", "Mozzarella"],
+        steps: "Saltea las espinacas. Alterna capas de pasta, salsa, mezcla de quesos y espinacas. Hornea 30 minutos a 180°C."
+      },
+      {
+        title: "Bowl de Garbanzos",
+        desc: "Proteína vegetal con un toque mediterráneo.",
+        img: "images/recipe-3.png", 
+        type: "Vegano",
+        meta: "⏱ 15 min | Muy Fácil",
+        ingredients: ["Garbanzos cocidos", "Pepino", "Tomates", "Tahini", "Aceitunas"],
+        steps: "Mezcla todos los ingredientes en un bowl. Aliña con una salsa hecha de tahini, limón y sal."
+      },
+      {
+        title: "Hamburguesa de Lentejas",
+        desc: "Textura increíble y mucho sabor ahumado.",
+        img: "images/recipe-4.png", 
+        type: "Vegano",
+        meta: "⏱ 30 min | Media",
+        ingredients: ["2 tazas de lentejas cocidas", "Cebolla", "Ajo", "Pan rallado", "Comino"],
+        steps: "Tritura las lentejas con cebolla y especias. Forma hamburguesas, añade pan rallado y cocina a la plancha 5 min por lado."
+      },
+      {
+        title: "Risotto de Hongos",
+        desc: "Cremoso, elegante y lleno de umami.",
+        img: "images/recipe-5.png",
+        type: "Vegetariano",
+        meta: "⏱ 40 min | Alta",
+        ingredients: ["Arroz Arborio", "Champiñones", "Caldo de verduras", "Parmesano", "Vino blanco"],
+        steps: "Sofríe los hongos. Añade el arroz y vino. Agrega caldo poco a poco removiendo constantemente hasta que esté cremoso."
+      },
+      {
+        title: "Curry de Garbanzos",
+        desc: "Un viaje a la India en cada bocado.",
+        img: "images/recipe-6.png",
+        type: "Vegano",
+        meta: "⏱ 20 min | Fácil",
+        ingredients: ["Garbanzos", "Leche de coco", "Curry en polvo", "Espinacas", "Arroz Basmati"],
+        steps: "Cocina el curry con leche de coco y garbanzos. Añade espinacas al final y sirve con arroz caliente."
+      },
+      {
+        title: "Pasta al Pesto Casero",
+        desc: "Clásico italiano con albahaca fresca.",
+        img: "images/recipe-7.png",
+        type: "Vegetariano",
+        meta: "⏱ 15 min | Fácil",
+        ingredients: ["Espaguetis", "Albahaca", "Piñones", "Aceite de oliva", "Ajo"],
+        steps: "Tritura albahaca, ajo, piñones y aceite. Mezcla con la pasta recién cocida y añade queso al gusto."
+      },
+      {
+        title: "Berenjenas Rellenas",
+        desc: "Deliciosas berenjenas gratinadas al horno.",
+        img: "images/recipe-8.png",
+        type: "Vegetariano",
+        meta: "⏱ 40 min |  Media",
+        ingredients: ["2 Berenjenas", "Pimientos", "Cebolla", "Queso rallado", "Tomate frito"],
+        steps: "Vacía las berenjenas y saltea la pulpa con verduras. Rellena las cáscaras, pon queso encima y hornea hasta dorar."
+      },
+      {
+        title: "Shakshuka de Tofu",
+        desc: "Desayuno o cena nutritiva y especiada.",
+        img: "images/recipe-9.png",
+        type: "Vegano",
+        meta: "⏱ 25 min |  Fácil",
+        ingredients: ["Tofu firme", "Pimientos rojos", "Tomate triturado", "Comino", "Pimentón"],
+        steps: "Prepara una salsa espesa de tomate y pimientos. Añade cubos de tofu y deja cocinar a fuego lento 10 minutos."
+      },
+      {
+        title: "Ensalada Caprese Especial",
+        desc: "Refrescante con un toque de reducción balsámica.",
+        img: "images/recipe-10.png",
+        type: "Vegetariano",
+        meta: "⏱ 10 min |  Muy Fácil",
+        ingredients: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite Balsámico"],
+        steps: "Corta tomates y mozzarella en rodajas. Intercala con hojas de albahaca y rocía con aceite y reducción balsámica."
+      },
+      {
+  title: "Bowl de Falafel Crujiente",
+  desc: "Sabor mediterráneo con falafel casero y salsa tahini.",
+  img: "images/recipe-11.png",
+  type: "Vegano",
+  meta: "⏱ 20 min | Fácil",
+  ingredients: ["Falafel", "Hummus", "Pepino", "Tomates cherry", "Salsa Tahini"],
+  steps: "Hornea o fríe los falafels hasta que estén dorados. Sírvelos sobre una base de vegetales frescos, añade una porción de hummus y rocía con salsa tahini."
+},
+{
+  title: "Toasts de Aguacate y Garbanzos",
+  desc: "Desayuno o cena llena de proteína y grasas saludables.",
+  img: "images/recipe-12.png",
+  type: "Vegano",
+  meta: "⏱ 15 min | Muy Fácil",
+  ingredients: ["Pan integral", "Aguacate", "Garbanzos crujientes", "Limón", "Semillas de sésamo"],
+  steps: "Tuesta el pan y unta el aguacate machacado con limón y sal. Añade garbanzos (previamente salteados con especias) por encima y espolvorea sésamo."
+}
+    ];
+
+    function loadRecipes(data) {
+  const grid = document.getElementById('recipeGrid');
+  grid.innerHTML = '';
+  data.forEach((r, index) => {
+    grid.innerHTML += `
+      <div class="col-md-4">
+        <div class="recipe_card card">
+          <span class="badge-type">${r.type}</span>
+          <img src="${r.img}" class="card-img-top" alt="${r.title}">
+          <div class="card-body">
+            <h5 style="color: #333;">${r.title}</h5>
+            <p class="small text-muted">${r.desc}</p>
+            <button 
+              onclick="viewDetails(${index})" 
+              style="background-color: #5E936C !important; color: white !important; border: none; padding: 8px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer;">
+              Ver Receta
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
+    function viewDetails(index) {
+      const r = recipes[index];
+      document.getElementById('modalTitle').innerText = r.title;
+      document.getElementById('modalImg').src = r.img;
+      document.getElementById('modalMeta').innerText = r.meta;
+      document.getElementById('modalSteps').innerText = r.steps;
+      
+      const ingList = document.getElementById('modalIngredients');
+      ingList.innerHTML = '';
+      r.ingredients.forEach(ing => {
+        ingList.innerHTML += `<li>${ing}</li>`;
+      });
+      
+      $('#recipeModal').modal('show');
+    }
+
+    function searchRecipe() {
+      const term = document.getElementById('recipeInput').value.toLowerCase();
+      const filtered = recipes.filter(r => 
+        r.title.toLowerCase().includes(term) || 
+        r.type.toLowerCase().includes(term)
+      );
+      loadRecipes(filtered);
+    }
+
+    // Carga inicial
+    loadRecipes(recipes);
+  </script>
+</body>
+</html>
