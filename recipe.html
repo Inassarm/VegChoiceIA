@@ -11,18 +11,27 @@
   <link href="https://fonts.googleapis.com/css?family=Dosis:400,500|Poppins:400,700&display=swap" rel="stylesheet">
   
   <style>
-    /* Estilos de la plantilla original adaptados */
-    body { font-family: 'Poppins', sans-serif; background-color: #fcfcfc; }
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background-color: #fcfcfc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
     .hero_area { background-color: #f8f9fa; border-bottom: 1px solid #eee; }
     .custom_nav-container .nav-link { color: #333; font-weight: 500; }
     
-    /* Buscador */
     .search_section { padding: 60px 0; background: #e9f5ec; text-align: center; }
     .search_box { max-width: 600px; margin: 0 auto; display: flex; gap: 10px; }
     .search_box input { border-radius: 30px; padding: 10px 25px; border: 1px solid #ddd; flex-grow: 1; }
-    .search_box button { border-radius: 30px; background-color: #5E936C; color: white; border: none; padding: 10px 30px; }
+    .search_box button { border-radius: 30px; background-color: #5E936C; color: white; border: none; padding: 10px 30px; cursor: pointer; }
+    .search_box button:hover { background-color: #4a7556; }
 
-    /* Tarjetas de Recetas */
+    .main-content {
+      flex: 1;
+    }
+
     .recipe_card {
       border: none;
       border-radius: 15px;
@@ -32,13 +41,51 @@
       overflow: hidden;
       height: 100%;
     }
-    .recipe_card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(58, 24, 211, 0.2); }
-    .recipe_card img { height: 180px; object-fit: cover; }
+    .recipe_card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(94, 147, 108, 0.2); }
+    .recipe_card img { height: 180px; object-fit: cover; width: 100%; }
     .badge-type { position: absolute; top: 10px; right: 10px; background: #5E936C; color: white; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; }
     
-    /* Modal Personalizado */
     .modal-header { background-color: #5E936C; color: white; border-radius: 15px 15px 0 0; }
     .recipe-meta { color: #5E936C; font-size: 0.9rem; margin-bottom: 15px; display: block; }
+
+    .info_section {
+      background-color: #f9fbf2;
+      border-top: 5px solid #5E936C;
+      padding: 40px 0 20px;
+    }
+
+    .info_items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .info_section .item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .info_section .img-box img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer_section {
+      background-color: #5E936C;
+      padding: 20px 0;
+      margin-top: 0;
+    }
+
+    .footer_section p {
+      color: white;
+      margin: 0;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
   </style>
 </head>
 
@@ -50,39 +97,43 @@
           <a class="navbar-brand" href="index.html">
             <span style="color: #5E936C; font-weight: bold; font-size: 24px;">VegChoice Recipes</span>
           </a>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
+              <ul class="navbar-nav">
                 <li class="nav-item active">
                   <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
                 </li>
-                               <li class="nav-item">
+                <li class="nav-item">
                   <a class="nav-link" href="game.html">Juegos</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="recipe.html"> Recetas </a>
+                  <a class="nav-link" href="recipe.html">Recetas</a>
                 </li>
               </ul>
-              
             </div>
+          </div>
         </nav>
       </div>
     </header>
   </div>
 
-  <section class="search_section">
-    <div class="container">
-      <h2 class="mb-4">¿Qué te apetece cocinar hoy?</h2>
-      <div class="search_box">
-        <input type="text" id="recipeInput" placeholder="Busca por nombre o ingrediente..." onkeyup="searchRecipe()">
-        <button onclick="searchRecipe()">Buscar</button>
+  <div class="main-content">
+    <section class="search_section">
+      <div class="container">
+        <h2 class="mb-4">¿Qué te apetece cocinar hoy?</h2>
+        <div class="search_box">
+          <input type="text" id="recipeInput" placeholder="Busca por nombre o ingrediente..." onkeyup="searchRecipe()">
+          <button onclick="searchRecipe()">Buscar</button>
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <div class="container layout_padding">
-    <div class="row" id="recipeGrid">
-      </div>
+    <div class="container layout_padding" style="padding: 60px 0;">
+      <div class="row" id="recipeGrid"></div>
+    </div>
   </div>
 
   <div class="modal fade" id="recipeModal" tabindex="-1" role="dialog" aria-hidden="true">
@@ -112,6 +163,39 @@
       </div>
     </div>
   </div>
+
+  <section class="info_section">
+    <div class="container">
+      <div class="row info_items">
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="item">
+            <div class="img-box">
+              <img src="images/logo.png" alt="VegChoice Logo">
+            </div>
+            <div class="detail-box">
+              <h5 style="color: #5E936C; font-weight: bold; margin: 0;">VegChoice</h5>
+              <p style="font-size: 0.9rem; color: #666;">¡Energía natural para superhéroes!</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 offset-lg-4 text-md-right">
+          <div class="detail-box">
+            <p style="color: #999; font-size: 0.85rem; margin: 0;">
+              &copy; 2026 <strong>Vegchoice</strong>.<br>
+              Todos los derechos reservados.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer_section">
+    <div class="container text-center">
+      <p>Hecho con ❤️ para una alimentación saludable</p>
+    </div>
+  </footer>
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.bundle.min.js"></script>
@@ -186,7 +270,7 @@
         desc: "Deliciosas berenjenas gratinadas al horno.",
         img: "images/recipe-8.png",
         type: "Vegetariano",
-        meta: "⏱ 40 min |  Media",
+        meta: "⏱ 40 min | Media",
         ingredients: ["2 Berenjenas", "Pimientos", "Cebolla", "Queso rallado", "Tomate frito"],
         steps: "Vacía las berenjenas y saltea la pulpa con verduras. Rellena las cáscaras, pon queso encima y hornea hasta dorar."
       },
@@ -195,7 +279,7 @@
         desc: "Desayuno o cena nutritiva y especiada.",
         img: "images/recipe-9.png",
         type: "Vegano",
-        meta: "⏱ 25 min |  Fácil",
+        meta: "⏱ 25 min | Fácil",
         ingredients: ["Tofu firme", "Pimientos rojos", "Tomate triturado", "Comino", "Pimentón"],
         steps: "Prepara una salsa espesa de tomate y pimientos. Añade cubos de tofu y deja cocinar a fuego lento 10 minutos."
       },
@@ -204,53 +288,54 @@
         desc: "Refrescante con un toque de reducción balsámica.",
         img: "images/recipe-10.png",
         type: "Vegetariano",
-        meta: "⏱ 10 min |  Muy Fácil",
+        meta: "⏱ 10 min | Muy Fácil",
         ingredients: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite Balsámico"],
         steps: "Corta tomates y mozzarella en rodajas. Intercala con hojas de albahaca y rocía con aceite y reducción balsámica."
       },
       {
-  title: "Bowl de Falafel Crujiente",
-  desc: "Sabor mediterráneo con falafel casero y salsa tahini.",
-  img: "images/recipe-11.png",
-  type: "Vegano",
-  meta: "⏱ 20 min | Fácil",
-  ingredients: ["Falafel", "Hummus", "Pepino", "Tomates cherry", "Salsa Tahini"],
-  steps: "Hornea o fríe los falafels hasta que estén dorados. Sírvelos sobre una base de vegetales frescos, añade una porción de hummus y rocía con salsa tahini."
-},
-{
-  title: "Toasts de Aguacate y Garbanzos",
-  desc: "Desayuno o cena llena de proteína y grasas saludables.",
-  img: "images/recipe-12.png",
-  type: "Vegano",
-  meta: "⏱ 15 min | Muy Fácil",
-  ingredients: ["Pan integral", "Aguacate", "Garbanzos crujientes", "Limón", "Semillas de sésamo"],
-  steps: "Tuesta el pan y unta el aguacate machacado con limón y sal. Añade garbanzos (previamente salteados con especias) por encima y espolvorea sésamo."
-}
+        title: "Bowl de Falafel Crujiente",
+        desc: "Sabor mediterráneo con falafel casero y salsa tahini.",
+        img: "images/recipe-11.png",
+        type: "Vegano",
+        meta: "⏱ 20 min | Fácil",
+        ingredients: ["Falafel", "Hummus", "Pepino", "Tomates cherry", "Salsa Tahini"],
+        steps: "Hornea o fríe los falafels hasta que estén dorados. Sírvelos sobre una base de vegetales frescos, añade una porción de hummus y rocía con salsa tahini."
+      },
+      {
+        title: "Toasts de Aguacate y Garbanzos",
+        desc: "Desayuno o cena llena de proteína y grasas saludables.",
+        img: "images/recipe-12.png",
+        type: "Vegano",
+        meta: "⏱ 15 min | Muy Fácil",
+        ingredients: ["Pan integral", "Aguacate", "Garbanzos crujientes", "Limón", "Semillas de sésamo"],
+        steps: "Tuesta el pan y unta el aguacate machacado con limón y sal. Añade garbanzos (previamente salteados con especias) por encima y espolvorea sésamo."
+      }
     ];
 
     function loadRecipes(data) {
-  const grid = document.getElementById('recipeGrid');
-  grid.innerHTML = '';
-  data.forEach((r, index) => {
-    grid.innerHTML += `
-      <div class="col-md-4">
-        <div class="recipe_card card">
-          <span class="badge-type">${r.type}</span>
-          <img src="${r.img}" class="card-img-top" alt="${r.title}">
-          <div class="card-body">
-            <h5 style="color: #333;">${r.title}</h5>
-            <p class="small text-muted">${r.desc}</p>
-            <button 
-              onclick="viewDetails(${index})" 
-              style="background-color: #5E936C !important; color: white !important; border: none; padding: 8px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer;">
-              Ver Receta
-            </button>
+      const grid = document.getElementById('recipeGrid');
+      grid.innerHTML = '';
+      data.forEach((r, index) => {
+        grid.innerHTML += `
+          <div class="col-md-4">
+            <div class="recipe_card card">
+              <span class="badge-type">${r.type}</span>
+              <img src="${r.img}" class="card-img-top" alt="${r.title}">
+              <div class="card-body">
+                <h5 style="color: #333;">${r.title}</h5>
+                <p class="small text-muted">${r.desc}</p>
+                <button 
+                  onclick="viewDetails(${index})" 
+                  style="background-color: #5E936C !important; color: white !important; border: none; padding: 8px; width: 100%; border-radius: 5px; font-weight: bold; cursor: pointer;">
+                  Ver Receta
+                </button>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
-    `;
-  });
-}
+        `;
+      });
+    }
+
     function viewDetails(index) {
       const r = recipes[index];
       document.getElementById('modalTitle').innerText = r.title;
@@ -276,7 +361,6 @@
       loadRecipes(filtered);
     }
 
-    // Carga inicial
     loadRecipes(recipes);
   </script>
 </body>

@@ -329,6 +329,182 @@ a:focus {
   color: #023b48;
 }
 
+/* ========================================
+   ESTRUCTURA GENERAL DEL BODY Y FOOTER
+   ======================================== */
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+}
+
+/* ========================================
+   PROTEÍNAS - FILTROS INTERACTIVOS
+   ======================================== */
+.protein-filter {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.protein-filter:hover {
+  transform: scale(1.1);
+}
+
+/* ========================================
+   VIDEO WRAPPER
+   ======================================== */
+.video-wrapper {
+  border: 8px solid white;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+  border-radius: 15px;
+}
+
+/* ========================================
+   MODAL - BENEFICIOS DE PROTEÍNAS
+   ======================================== */
+.modal {
+  z-index: 1050 !important;
+}
+
+.modal-backdrop {
+  z-index: 1040 !important;
+}
+
+.modal-rounded {
+  border-radius: 30px;
+  border: none;
+}
+
+.modal-header-success {
+  background-color: #28a745;
+  color: white;
+  border-radius: 30px 30px 0 0;
+  padding: 30px;
+}
+
+.modal-close-btn {
+  font-size: 2rem;
+}
+
+.modal-protein-img {
+  border: 5px solid #28a745;
+  border-radius: 50%;
+  box-shadow: 0 5px 15px rgba(40, 167, 69, 0.3);
+  margin-bottom: 1.5rem;
+  width:100%;
+}
+
+.benefit-list {
+  font-size: 1.25rem;
+  line-height: 1.8;
+}
+
+/* ========================================
+   NOTICIAS - TARJETAS INTERACTIVAS
+   ======================================== */
+.news-link {
+  text-decoration: none;
+  color: inherit;
+}
+
+.news-card {
+  background: white;
+  border-radius: 15px;
+  padding: 25px;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.news-card:hover {
+  box-shadow: 0 8px 25px rgba(40, 167, 69, 0.3);
+  transform: translateY(-5px);
+}
+
+.news-title {
+  color: #28a745;
+}
+
+/* ========================================
+   INFO SECTION
+   ======================================== */
+.info_section {
+  background-color: #f9fbf2;
+  border-top: 5px solid #5E936C;
+  padding: 40px 0 20px;
+}
+
+.info_items {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.info-img-box img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.info-title {
+  color: #5E936C;
+  font-weight: bold;
+  margin: 0;
+}
+
+.info-subtitle {
+  font-size: 0.9rem;
+  color: #666;
+}
+
+.info-copyright {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* ========================================
+   FOOTER
+   ======================================== */
+.footer_section {
+  background-color: #5E936C;
+  padding: 20px 0;
+  margin-top: 0;
+}
+
+.footer_section p {
+  color: white;
+  margin: 0;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* ========================================
+   RESPONSIVE - MÓVILES
+   ======================================== */
+@media (max-width: 768px) {
+  .info_items > div {
+    text-align: center !important;
+    margin-bottom: 20px;
+  }
+  
+  .info-item {
+    justify-content: center;
+  }
+}
+
 .gallery-section {
   background-color: #93DA97;
 }
@@ -349,6 +525,7 @@ a:focus {
 
 .gallery-section .container h2 {
   color: #ffffff;
+  font-size:50px;
 }
 
 .gallery-section .img_box {
