@@ -11,7 +11,7 @@
   <meta name="keywords" content="" />
   <meta name="description" content="" />
   <meta name="author" content="" />
-
+  <link rel="icon" type="image/png" href="images/logo.png">
   <title>VegChoice</title>
 
   <!-- slider stylesheet -->
@@ -34,41 +34,38 @@
   <div class="hero_area">
     <!-- header section strats -->
     <header class="header_section">
-      <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg custom_nav-container ">
-          <a class="navbar-brand" href="index.html">
-            <img src="images/logo.png" alt="">
-            <span>
-              VegChoice
-            </span>
-          </a>
-          <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
+  <div class="container-fluid">
+    <nav class="navbar navbar-expand-lg custom_nav-container fixed-top">
+      <a class="navbar-brand" href="index.html">
+        <img src="images/logo.png" alt="VegChoice Logo" id="nav-logo">
+        <span>Vegchoice</span>
+      </a>
+      
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+  aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <div class="hamburger-icon">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+</button>
 
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <div class="d-flex mx-auto flex-column flex-lg-row align-items-center">
-              <ul class="navbar-nav  ">
-                <li class="nav-item active">
-                  <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
-                </li>
-                               <li class="nav-item">
-                  <a class="nav-link" href="game.html">Juegos</a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="recipe.html"> Recetas </a>
-                </li>
-              </ul>
-              
-            </div>
-            <div class="quote_btn-container  d-flex justify-content-center">
-              
-            </div>
-          </div>
-        </nav>
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="game.html">Juegos</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="recipe.html">Recetas</a>
+          </li>
+        </ul>
       </div>
-    </header>
+    </nav>
+  </div>
+</header>
     <!-- end header section -->
 
   </div>
@@ -208,57 +205,52 @@
     };
   </script>
 
-
-  <<section class="info_section layout_padding2" style="background-color: #f9fbf2; border-top: 5px solid #5E936C;">
-  <div class="container">
-    <div class="row info_items" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap;">
-      
-      <div class="col-md-4" style="margin-bottom: 20px;">
-        <div class="item" style="display: flex; align-items: center;">
-          <div class="img-box">
-            <img src="images/logo.png"  style="width: 100%; border-radius: 80%;">
+<section class="info_section">
+    <div class="container">
+      <div class="row info_items">
+        <div class="col-md-6 col-lg-4 mb-3">
+          <div class="info-item">
+            <div class="info-img-box">
+              <img src="images/logo.png" alt="VegChoice Logo">
+            </div>
+            <div class="detail-box">
+              <h5 class="info-title">VegChoice</h5>
+              <p class="info-subtitle">¡Energía natural para superhéroes!</p>
+            </div>
           </div>
+        </div>
+
+        <div class="col-md-6 col-lg-4 offset-lg-4 text-md-right">
           <div class="detail-box">
-            <h5 style="color: #5E936C; font-weight: bold; margin: 0;">VegChoice</h5>
-            <p style="font-size: 0.9rem; color: #666;">¡Energía natural para superhéroes!</p>
+            <p class="info-copyright">
+              &copy; 2026 <strong>Vegchoice</strong>.<br>
+              Todos los derechos reservados.
+            </p>
           </div>
         </div>
       </div>
-
-      <div class="col-md-4 text-center" style="margin-bottom: 20px;">
-        <div class="social_box">
-          
-          <a href="#" style="margin: 0 10px; color: #8cc63f; font-size: 1.5rem;"><i class="fa fa-instagram"></i></a>
-          <a href="#" style="margin: 0 10px; color: #8cc63f; font-size: 1.5rem;"><i class="fa fa-facebook"></i></a>
-          <a href="#" style="margin: 0 10px; color: #8cc63f; font-size: 1.5rem;"><i class="fa fa-youtube"></i></a>
-        </div>
-      </div>
-
-      <div class="col-md-4 text-right">
-        <div class="detail-box">
-          <p style="color: #999; font-size: 0.85rem; margin: 0;">
-            &copy; 2026 <strong>Vegchoice</strong>.<br>
-            Todos los derechos reservados.
-          </p>
-        </div>
-      </div>
-      
     </div>
-  </div>
-</section>
-<footer class="container-fluid footer_section" style="background-color: #5E936C; padding: 15px 0;">
-  <div class="container text-center">
-    <p style="color: white; margin: 0; font-size: 0.8rem; letter-spacing: 1px;">
-      Hecho con ❤️ para una alimentación saludable
-    </p>
-  </div>
-</footer>
+  </section>
+
+  <footer class="footer_section">
+    <div class="container text-center">
+      <p>Hecho con ❤️ para una alimentación saludable</p>
+    </div>
+  </footer>
   <!-- footer section -->
 
   <script type="text/javascript" src="js/jquery-3.4.1.min.js"></script>
   <script type="text/javascript" src="js/bootstrap.js"></script>
 
-
+<script>
+  $(window).scroll(function() {
+    if ($(this).scrollTop() > 30) {
+      $('.custom_nav-container').addClass('nav-fixed-active');
+    } else {
+      $('.custom_nav-container').removeClass('nav-fixed-active');
+    }
+  });
+</script>
   
 </body>
 

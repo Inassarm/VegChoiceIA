@@ -4,6 +4,84 @@ body {
   background-color: #ffffff;
 }
 
+/* --- NAVBAR MEJORADO --- */
+.custom_nav-container {
+  padding: 10px 45px;
+  background: #f6f8f7; /* Tu color original */
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+}
+
+/* El logo mantiene su tamaño de 30px */
+.navbar-brand img {
+  width: 30px;
+  margin-bottom: 5px;
+  margin-right: 15px;
+  transition: all 0.4s ease; /* Suavidad para el cambio de color */
+}
+
+/* Efecto al pasar el mouse sobre el BRAND (Logo + Texto) */
+.navbar-brand:hover img {
+  /* Cambia el color del logo (ajusta el hue-rotate si quieres otro tono) */
+  filter: hue-rotate(90deg) brightness(1.2); 
+  transform: scale(1.1);
+}
+
+.navbar-brand span {
+  font-family: "Poppins", sans-serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #191919;
+  transition: color 0.3s ease;
+}
+
+.navbar-brand:hover span {
+  color: #5E936C; /* El texto cambia a tu verde característico */
+}
+
+/* Links del menú */
+.custom_nav-container .navbar-nav .nav-link {
+  font-family: "Poppins", sans-serif;
+  text-transform: uppercase;
+  font-size: 15px;
+  font-weight: 500;
+  color: #434242 !important;
+  margin: 0 15px;
+  position: relative;
+}
+
+/* Línea animada debajo de los links */
+.custom_nav-container .navbar-nav .nav-link::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: 0;
+  left: 0;
+  background-color: #5E936C;
+  transition: width 0.3s ease;
+}
+
+.custom_nav-container .navbar-nav .nav-link:hover::after {
+  width: 100%;
+}
+
+.custom_nav-container .navbar-nav .nav-link:hover {
+  color: #5E936C !important;
+}
+
+/* Estilo para cuando se hace scroll (opcional pero recomendado) */
+.nav-fixed-active {
+  padding: 5px 45px;
+  background: rgba(255, 255, 255, 0.98) !important;
+  box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+}
+
+/* Ajuste necesario para que el contenido no quede oculto bajo el navbar fixed */
+body {
+  padding-top: 75px;
+}
+
 .layout_padding {
   padding: 50px 0;
 }
@@ -107,6 +185,7 @@ a:focus {
   font-weight: bold;
   font-size: 24px;
   color: #fafcfd;
+  margin-right:15px;
 }
 
 .custom_nav-container .nav_search-btn {
@@ -145,10 +224,6 @@ a:focus {
   margin-top: 5px;
 }
 
-.custom_nav-container {
-  z-index: 99999;
-  padding: 5px 0;
-}
 
 .custom_nav-container .navbar-toggler {
   outline: none;
@@ -157,6 +232,92 @@ a:focus {
 .custom_nav-container .navbar-toggler .navbar-toggler-icon {
   background-image: url(../images/menu.png);
   background-size: 55px;
+}
+
+/* Estilo del botón del menú móvil */
+.custom_nav-container .navbar-toggler {
+  outline: none;
+  padding: 0;
+  width: 45px;
+  height: 35px;
+  transition: all 0.3s;
+  border: 1px solid #5E936C; /* Un borde sutil con tu verde */
+}
+
+/* El ícono de barras (reemplazando la imagen por una dibujada con CSS para más control) */
+.navbar-toggler-icon {
+  background-image: none !important; /* Quitamos la imagen por defecto */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 8px;
+}
+
+/* Creamos las 3 líneas del menú con spans o pseudoelementos */
+.navbar-toggler-icon::before,
+.navbar-toggler-icon::after,
+.navbar-toggler-icon {
+  content: "";
+  background-color: #5E936C; /* Tu color verde */
+  height: 3px;
+  width: 25px;
+  border-radius: 5px;
+  display: block;
+}
+
+/* Estilo para el despliegue del menú en móvil */
+@media (max-width: 992px) {
+  .navbar-collapse {
+    background: #ffffff;
+    border-radius: 15px;
+    padding: 20px;
+    margin-top: 15px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+  }
+  
+  .custom_nav-container .navbar-nav .nav-link {
+    text-align: center;
+    padding: 15px 0;
+    border-bottom: 1px solid #f1f1f1;
+  }
+
+  .custom_nav-container .navbar-nav .nav-link::after {
+    display: none; /* Quitamos la línea animada en móvil para que no se vea raro */
+  }
+
+  .navbar-brand {
+    flex-direction: row !important; /* Asegurar que logo y texto estén alineados */
+    gap: 10px;
+  }
+}
+
+/* Estilo base del botón toggler */
+.navbar-toggler {
+  border: none !important;
+  padding: 0 !important;
+}
+
+/* Contenedor de las líneas */
+.hamburger-icon {
+  width: 30px;
+  height: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+/* Estilo de cada línea individual */
+.hamburger-icon span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: #5E936C; /* Tu color verde */
+  border-radius: 3px;
+  transition: all 0.3s ease;
 }
 
 /*end header section*/
@@ -766,6 +927,309 @@ body {
       font-weight: bold;
     }
 
+    
+
+    body { 
+      font-family: 'Poppins', sans-serif; 
+      background-color: #fcfcfc;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+    
+    .hero_area { background-color: #f8f9fa; border-bottom: 1px solid #eee; }
+    .custom_nav-container .nav-link { color: #333; font-weight: 500; }
+    
+    .search_section { padding: 60px 0; background: #e9f5ec; text-align: center; }
+    .search_box { max-width: 600px; margin: 0 auto; display: flex; gap: 10px; }
+    .search_box input { border-radius: 30px; padding: 10px 25px; border: 1px solid #ddd; flex-grow: 1; }
+    .search_box button { border-radius: 30px; background-color: #5E936C; color: white; border: none; padding: 10px 30px; cursor: pointer; }
+    .search_box button:hover { background-color: #4a7556; }
+
+    .main-content {
+      flex: 1;
+    }
+
+    .recipe_card {
+      border: none;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      margin-bottom: 30px;
+      transition: 0.3s;
+      overflow: hidden;
+      height: 100%;
+    }
+    .recipe_card:hover { transform: translateY(-5px); box-shadow: 0 10px 25px rgba(94, 147, 108, 0.2); }
+    .recipe_card img { height: 180px; object-fit: cover; width: 100%; }
+    .badge-type { position: absolute; top: 10px; right: 10px; background: #5E936C; color: white; padding: 3px 12px; border-radius: 20px; font-size: 0.7rem; }
+    
+    .modal-header { background-color: #5E936C; color: white; border-radius: 15px 15px 0 0; }
+    .recipe-meta { color: #5E936C; font-size: 0.9rem; margin-bottom: 15px; display: block; }
+
+    .info_section {
+      background-color: #f9fbf2;
+      border-top: 5px solid #5E936C;
+      padding: 40px 0 20px;
+    }
+
+    .info_items {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    .info_section .item {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .info_section .img-box img {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .footer_section {
+      background-color: #5E936C;
+      padding: 20px 0;
+      margin-top: 0;
+    }
+
+    .footer_section p {
+      color: white;
+      margin: 0;
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+    }
+/* ========== RECIPE PAGE STYLES ========== */
+
+/* Navbar Brand */
+.navbar-brand-recipe {
+  color: #5E936C;
+  font-weight: bold;
+  font-size: 24px;
+}
+
+/* Search Section */
+.search_section {
+  padding: 40px 0;
+  background-color: #f8f9fa;
+}
+
+.search_section h2 {
+  color: #333;
+  font-weight: bold;
+  text-align: center;
+}
+
+.search_box {
+  max-width: 600px;
+  margin: 20px auto;
+  display: flex;
+  gap: 10px;
+}
+
+.search_box input {
+  flex: 1;
+  padding: 12px 20px;
+  border: 2px solid #5E936C;
+  border-radius: 25px;
+  font-size: 16px;
+  outline: none;
+}
+
+.search_box input:focus {
+  border-color: #4a7556;
+}
+
+.search_box button {
+  background-color: #5E936C;
+  color: white;
+  border: none;
+  padding: 12px 30px;
+  border-radius: 25px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.search_box button:hover {
+  background-color: #4a7556;
+}
+
+/* Recipe Cards */
+.recipe_card {
+  margin-bottom: 30px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s, box-shadow 0.3s;
+  position: relative;
+}
+
+.recipe_card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.recipe_card .card-img-top {
+  height: 220px;
+  object-fit: cover;
+}
+
+.recipe_card .card-body {
+  padding: 20px;
+}
+
+.recipe_card .card-body h5 {
+  color: #333;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.badge-type {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: #5E936C;
+  color: white;
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: bold;
+  z-index: 1;
+}
+
+.btn-view-recipe {
+  background-color: #5E936C !important;
+  color: white !important;
+  border: none;
+  padding: 8px;
+  width: 100%;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-view-recipe:hover {
+  background-color: #4a7556 !important;
+}
+
+/* Modal Styles */
+.modal-content {
+  border-radius: 15px;
+}
+
+.modal-header {
+  background-color: #5E936C;
+  color: white;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.modal-header .close {
+  color: white;
+}
+
+.modal-img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
+
+.recipe-meta {
+  display: inline-block;
+  background-color: #f0f4f1;
+  color: #5E936C;
+  padding: 8px 15px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+}
+
+.modal-body h6 {
+  color: #5E936C;
+  font-weight: bold;
+  margin-top: 15px;
+  margin-bottom: 10px;
+}
+
+.modal-body ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.modal-body ul li {
+  padding: 5px 0;
+  padding-left: 20px;
+  position: relative;
+}
+
+.modal-body ul li:before {
+  content: "✓";
+  position: absolute;
+  left: 0;
+  color: #5E936C;
+  font-weight: bold;
+}
+
+.modal-body p {
+  color: #666;
+  line-height: 1.6;
+}
+
+/* Info Section Adjustments */
+.info_section .item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.info_section .img-box {
+  flex-shrink: 0;
+}
+
+.info_section .img-box img {
+  width: 60px;
+  height: auto;
+}
+
+.info-title-recipe {
+  color: #5E936C;
+  font-weight: bold;
+  margin: 0;
+}
+
+.info-subtitle-recipe {
+  font-size: 0.9rem;
+  color: #666;
+  margin: 0;
+}
+
+.info-copyright-recipe {
+  color: #999;
+  font-size: 0.85rem;
+  margin: 0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 768px) {
+  .search_box {
+    flex-direction: column;
+  }
+  
+  .search_box button {
+    width: 100%;
+  }
+  
+  .recipe_card .card-img-top {
+    height: 180px;
+  }
+}
     
 
 .protein-filter {
