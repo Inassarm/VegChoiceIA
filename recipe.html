@@ -246,26 +246,31 @@
     ];
 
     function loadRecipes(data) {
-      const grid = document.getElementById('recipeGrid');
-      grid.innerHTML = '';
-      data.forEach((r, index) => {
-        grid.innerHTML += `
-          <div class="col-md-4 mb-4">
-            <div class="recipe_card card">
-              <span class="badge-type">${r.type}</span>
-              <img src="${r.img}" class="card-img-top" alt="${r.title}">
-              <div class="card-body">
-                <h5>${r.title}</h5>
-                <p class="small text-muted">${r.desc}</p>
-                <button onclick="viewDetails(${index})" class="btn-view-recipe">
-                  Ver Receta
-                </button>
-              </div>
-            </div>
+  const grid = document.getElementById('recipeGrid');
+  grid.innerHTML = '';
+  data.forEach((r, index) => {
+    grid.innerHTML += `
+      <div class="col-md-4 mb-4">
+        <div class="recipe_card card">
+          <div class="recipe_img_container">
+            <span class="badge-type">${r.type}</span>
+            <img src="${r.img}" alt="${r.title}">
           </div>
-        `;
-      });
-    }
+          
+          <div class="card-body">
+            <div class="recipe-description">
+              <h5 class="font-weight-bold">${r.title}</h5>
+              <p class=" text-muted">${r.desc}</p>
+            </div>
+            <button onclick="viewDetails(${index})" class="btn-view-recipe">
+              Ver Receta
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  });
+}
 
     function viewDetails(index) {
       const r = recipes[index];
