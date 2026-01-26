@@ -96,6 +96,7 @@ body {
 
 .layout_padding2-bottom {
   padding-bottom: 45px;
+  
 }
 
 .layout_padding-top {
@@ -104,10 +105,12 @@ body {
 
 .layout_padding-bottom {
   padding-bottom: 75px;
+  padding-top: 40px;
 }
 
 .custom_heading {
   color: #030404;
+  padding-top: 40px;
 }
 
 .custom_heading span {
@@ -688,6 +691,7 @@ body {
 .gallery-section .container h2 {
   color: #ffffff;
   font-size:50px;
+  padding-top: 40px;
 }
 
 .gallery-section .img_box {
@@ -1316,7 +1320,7 @@ body {
 
 /* Search Section */
 .search_section {
-  padding: 55px 0;
+  padding: 70px 0;
   background-color: #f8f9fa;
 }
 
