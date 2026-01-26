@@ -14,7 +14,7 @@ body {
 
 /* El logo mantiene su tamaño de 30px */
 .navbar-brand img {
-  width: 30px;
+  width: 80px;
   margin-bottom: 5px;
   margin-right: 15px;
   transition: all 0.4s ease; /* Suavidad para el cambio de color */
@@ -213,8 +213,9 @@ a:focus {
 }
 
 .navbar-brand img {
-  width: 30px;
+  width: 100px;
   margin-right: 5px;
+  margin: 2px;
 }
 
 .navbar-brand span {
@@ -631,7 +632,7 @@ body {
 }
 
 .info-copyright {
-  color: #999;
+  color: #666;
   font-size: 0.85rem;
   margin: 0;
 }
@@ -812,7 +813,7 @@ body {
       margin-bottom: 10px;
     }
 
-    #btn-start-game {
+    #rt-game {
       background-color: #ff7675;
       color: white;
       border: none;
@@ -822,10 +823,6 @@ body {
       font-weight: bold;
     }
 
-    .game_section {
-      background-color: #f7f7f7;
-      padding: 60px 0;
-    }
 
     .game_card {
       background: #ffffff;
@@ -927,7 +924,310 @@ body {
       font-weight: bold;
     }
 
-    
+    /* ============= ESTILOS GENERALES Y SECCIÓN TÍTULO ============= */
+.game_section {
+    padding: 30px 0 50px 0 !important;
+}
+
+.game_intro_title {
+    margin-top: 3rem;
+}
+
+.game_intro_title h1 {
+    color: #5E936C;
+    font-weight: bold;
+    font-size: 2.8rem;
+}
+
+.game_intro_title h1 span {
+    color: #93DA97;
+}
+
+.game_intro_title p {
+    font-size: 1.2rem;
+    color: #666;
+}
+
+.game_intro_divider {
+    width: 50px;
+    border: 2px solid #93DA97;
+    border-radius: 10px;
+}
+
+/* ============= JUEGO 1: ¿QUÉ TAN VERDE ES TU PLATO? ============= */
+.game_card {
+    background: #E8FFD7;
+    border: 2px solid #93DA97;
+    box-shadow: 0 4px 8px rgba(94, 147, 108, 0.2);
+    padding: 25px;
+    border-radius: 15px;
+    margin-top: 0;
+}
+
+.game_card h3 span {
+    color: #5E936C !important;
+}
+
+.game_question {
+    background: white;
+    border-left: 4px solid #93DA97;
+    padding: 15px;
+    margin: 20px 0;
+    border-radius: 5px;
+}
+
+.game_option {
+    display: block;
+    margin: 10px 0;
+    padding: 10px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.game_option:hover {
+    background: #f0f0f0;
+    border-radius: 5px;
+}
+
+.game_option input[type="radio"] {
+    margin-right: 10px;
+}
+
+.game_option input[type="radio"]:checked + span {
+    background: #93DA97;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 5px;
+}
+
+#btn-calc {
+    background: #5E936C;
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 25px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-top: 20px;
+}
+
+#btn-calc:hover {
+    background: #93DA97;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(94, 147, 108, 0.3);
+}
+
+.result_box {
+    background: #E8FFD7;
+    border: 2px solid #93DA97;
+    padding: 30px;
+    border-radius: 15px;
+    text-align: center;
+}
+
+.result_box h4 {
+    color: #5E936C;
+    font-size: 1.3em;
+    margin-bottom: 10px;
+}
+
+.result_box .points-label {
+    font-weight: 500;
+    color: #666;
+    margin-bottom: 5px;
+}
+
+#final-score {
+    color: #5E936C !important;
+    font-weight: bold;
+    font-size: 2.5em;
+}
+
+.btn-retry {
+    background: #5E936C;
+    color: white;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 25px;
+    font-weight: 600;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.btn-retry:hover {
+    background: #93DA97;
+}
+
+/* ============= JUEGO 2: SUPERMERCADO EXPRESS ============= */
+.supermarket {
+    background: linear-gradient(135deg, #E8FFD7 0%, #93DA97 100%);
+    padding: 60px 0;
+}
+
+.supermarket h2 span {
+    color: #5E936C;
+}
+
+.supermarket p.instruction-text {
+    color: black;
+    font-size: 1.1em;
+}
+
+.score_panel {
+    background: #5E936C;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    display: inline-block;
+    font-weight: bold;
+    font-size: 1.2em;
+    margin: 20px 0;
+    box-shadow: 0 4px 8px rgba(94, 147, 108, 0.3);
+}
+
+#btn-start-game {
+    background: #93DA97;
+    color: #5E936C;
+    border: 3px solid #5E936C;
+    padding: 15px 40px;
+    border-radius: 30px;
+    font-weight: bold;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: all 0.3s;
+    margin-bottom: 20px;
+    margin-left: 25px;
+}
+
+#btn-start-game:hover {
+    background: #5E936C;
+    color: white;
+    transform: scale(1.05);
+}
+
+#btn-start-game:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.shelf_container {
+    background: white;
+    border: 3px solid #93DA97;
+    border-radius: 15px;
+    min-height: 400px;
+    position: relative;
+    overflow: hidden;
+}
+
+.shelf_intro_msg {
+    color: #636e72;
+    padding-top: 150px;
+    text-align: center;
+    font-size: 1.2em;
+}
+
+.food_item {
+    position: absolute;
+    font-size: 3em;
+    cursor: pointer;
+    transition: all 0.2s;
+    animation: appear 0.3s ease;
+    user-select: none;
+}
+
+@keyframes appear {
+    from { transform: scale(0); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* ============= MODALES ============= */
+.game-modal-overlay {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85);
+    z-index: 10000;
+    justify-content: center; align-items: center;
+    backdrop-filter: blur(5px);
+}
+
+.game-modal-content {
+    background: white;
+    padding: 40px;
+    border-radius: 30px;
+    text-align: center;
+    border: 4px solid #93DA97;
+    box-shadow: 0 15px 35px rgba(0,0,0,0.5);
+    max-width: 400px;
+    width: 90%;
+    animation: modalPop 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#modal-points {
+    font-size: 70px;
+    font-weight: 900;
+    color: #4CAF50;
+    line-height: 1.2;
+    margin: 10px 0;
+}
+
+#btn-modal-close {
+    background: #5E936C;
+    color: white;
+    border: none;
+    padding: 12px 40px;
+    border-radius: 50px;
+    font-weight: bold;
+    margin-top: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+#btn-modal-close:hover {
+    background: #93DA97;
+    transform: scale(1.05);
+}
+
+@keyframes modalPop {
+    from { transform: scale(0.5); opacity: 0; }
+    to { transform: scale(1); opacity: 1; }
+}
+
+/* Alerta campos incompletos */
+.alert-modal {
+    display: none;
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.7);
+    z-index: 9999;
+    justify-content: center; align-items: center;
+    backdrop-filter: blur(3px);
+}
+
+.alert-modal-content {
+    background: white;
+    padding: 35px;
+    border-radius: 20px;
+    text-align: center;
+    border: 3px solid #FF6B6B;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+    max-width: 350px;
+    width: 85%;
+    animation: modalPop 0.3s ease-out;
+}
+
+.btn-alert-close {
+    background: #FF6B6B;
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 25px;
+    font-weight: bold;
+    margin-top: 15px;
+    cursor: pointer;
+}
 
     body { 
       font-family: 'Poppins', sans-serif; 
@@ -1279,9 +1579,6 @@ body {
   color: #023b48;
 }
 
-.client_section .pl-100 {
-  padding-left: 100px;
-}
 
 .client_section .client_container {
   width: 90%;
