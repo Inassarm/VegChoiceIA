@@ -1332,7 +1332,6 @@ body {
 
 .search_box {
   max-width: 600px;
-  margin: 20px auto;
   display: flex;
   gap: 10px;
 }
