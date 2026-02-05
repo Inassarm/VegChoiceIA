@@ -84,7 +84,7 @@ body {
 
 .layout_padding {
   padding: 5px 0;
-  padding-bottom: 25px;
+  padding-bottom: 40px;
 }
 
 .layout_padding-2 {
@@ -114,6 +114,15 @@ body {
   
 }
 
+.custom_heading-1 {
+  color: #5E936C;
+  padding-top: 50px;
+}
+
+.custom_heading-3 {
+  color: #5E936C;
+  padding-top: 0px;
+}
 .custom_heading {
   color: #030404;
   padding-top: 25px;
