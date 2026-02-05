@@ -84,6 +84,11 @@ body {
 
 .layout_padding {
   padding: 5px 0;
+  padding-bottom: 25px;
+}
+
+.layout_padding-2 {
+  padding: 5px 0;
 }
 
 .layout_padding2 {
@@ -99,18 +104,19 @@ body {
   
 }
 
+
 .layout_padding-top {
   padding-top: 75px;
 }
 
 .layout_padding-bottom {
   padding-bottom: 75px;
-  padding-top: 40px;
+  
 }
 
 .custom_heading {
   color: #030404;
-  padding-top: 40px;
+  padding-top: 25px;
 }
 
 .custom_heading span {
@@ -663,8 +669,8 @@ body {
   .info_items > div {
     text-align: center !important;
     margin-bottom: 20px;
+    
   }
-  
   .info-item {
     justify-content: center;
   }
@@ -1567,6 +1573,13 @@ body {
   .search_box {
     flex-direction: column;
   }
+
+
+  .slider_section {
+  
+  padding: 26% 0;
+  
+}
   
   .search_box button {
     width: 100%;
