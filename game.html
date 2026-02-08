@@ -14,6 +14,8 @@
   <link href="css/responsive.css" rel="stylesheet" />
   
   <link rel="stylesheet" type="text/css" href="css/styles.css" />
+
+
 </head>
 
 <body class="sub_page">
@@ -100,7 +102,7 @@
       <div class="score_panel">Puntos: <span id="game-points">0</span></div>
       <button id="btn-start-game">¡Empezar a comprar!</button>
       
-      <div class="shelf_container" id="shelf">
+      <div class="shelf_container" id="shelf" style="position: relative;">
         <div id="game-intro-msg" class="shelf_intro_msg">Dale a empezar para llenar tu carrito</div>
       </div>
     </div>
@@ -192,6 +194,20 @@
     let points = 0, gameActive = false, interval;
     const good = ['🥦', '🍎', '🥑', '🌽', '🍓', '🥕'], bad = ['🍔', '🥓', '🍕', '🌭'];
 
+    // Función para crear el efecto de brillo
+    function createSparkle(x, y) {
+      for (let i = 0; i < 5; i++) {
+        const sparkle = document.createElement('div');
+        sparkle.className = 'sparkle';
+        // Ajustamos la posición relativa al contenedor shelf
+        const rect = shelf.getBoundingClientRect();
+        sparkle.style.left = (x - rect.left) + (Math.random() * 20 - 10) + 'px';
+        sparkle.style.top = (y - rect.top) + (Math.random() * 20 - 10) + 'px';
+        shelf.appendChild(sparkle);
+        setTimeout(() => sparkle.remove(), 600);
+      }
+    }
+
     function createFood() {
       if (!gameActive) return;
       const item = document.createElement('div'), isGood = Math.random() > 0.3;
@@ -200,7 +216,10 @@
       item.style.left = Math.random() * 85 + '%';
       item.style.top = Math.random() * 75 + '%';
 
-      item.onclick = function() {
+      item.onclick = function(e) {
+        // Disparar brillos en la posición del clic
+        createSparkle(e.clientX, e.clientY);
+        
         points += isGood ? 10 : -20;
         pointsSpan.innerText = points;
         this.remove();
@@ -225,6 +244,5 @@
     document.getElementById('btn-modal-close').onclick = () => modal.style.display = 'none';
   </script>
 
-  
 </body>
 </html>
