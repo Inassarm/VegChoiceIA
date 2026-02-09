@@ -134,11 +134,12 @@
 
   <script>
 
-      const recipes = [
+     const recipes = [
       {
         title: "Tacos de Coliflor",
         desc: "Crujientes y picantes, perfectos para cenas rápidas.",
-        img: "images/food-1.png", 
+        img: "images/food-1.png",
+        originalImg: "images/recipe-1.png",  
         type: "Vegano",
         meta: "⏱ 25 min | Fácil",
         ingredients: ["1 coliflor pequeña", "Tortillas de maíz", "Salsa Buffalo", "Aguacate", "Cilantro"],
@@ -148,6 +149,7 @@
         title: "Lasaña de Espinacas",
         desc: "Capas de sabor con queso ricotta y espinacas frescas.",
         img: "images/food-2.png", 
+        originalImg: "images/recipe-2.png", 
         type: "Vegetariano",
         meta: "⏱ 45 min | Media",
         ingredients: ["Placas de pasta", "500g Espinacas", "Ricotta", "Salsa de tomate", "Mozzarella"],
@@ -157,6 +159,7 @@
         title: "Bowl de Garbanzos",
         desc: "Proteína vegetal con un toque mediterráneo.",
         img: "images/food-3.png",
+        originalImg: "images/recipe-3.png", 
         type: "Vegano",
         meta: "⏱ 15 min | Muy Fácil",
         ingredients: ["Garbanzos cocidos", "Pepino", "Tomates", "Tahini", "Aceitunas"],
@@ -166,6 +169,7 @@
         title: "Hamburguesa de Lentejas",
         desc: "Textura increíble y mucho sabor ahumado.",
         img: "images/food-4.png",
+        originalImg: "images/recipe-4.png", 
         type: "Vegano",
         meta: "⏱ 30 min | Media",
         ingredients: ["2 tazas de lentejas cocidas", "Cebolla", "Ajo", "Pan rallado", "Comino"],
@@ -175,6 +179,7 @@
         title: "Risotto de Hongos",
         desc: "Cremoso, elegante y lleno de umami.",
         img: "images/food-5.png",
+        originalImg: "images/recipe-5.png", 
         type: "Vegetariano",
         meta: "⏱ 40 min | Alta",
         ingredients: ["Arroz Arborio", "Champiñones", "Caldo de verduras", "Parmesano", "Vino blanco"],
@@ -184,6 +189,7 @@
         title: "Curry de Garbanzos",
         desc: "Un viaje a la India en cada bocado.",
         img: "images/food-6.png",
+        originalImg: "images/recipe-6.png", 
         type: "Vegano",
         meta: "⏱ 20 min | Fácil",
         ingredients: ["Garbanzos", "Leche de coco", "Curry en polvo", "Espinacas", "Arroz Basmati"],
@@ -193,6 +199,7 @@
         title: "Pasta al Pesto Casero",
         desc: "Clásico italiano con albahaca fresca.",
        img: "images/food-7.png",
+        originalImg: "images/recipe-7.png", 
         type: "Vegetariano",
         meta: "⏱ 15 min | Fácil",
         ingredients: ["Espaguetis", "Albahaca", "Piñones", "Aceite de oliva", "Ajo"],
@@ -202,6 +209,7 @@
         title: "Quinoa con Verduras Asadas",
         desc: "Ligera, nutritiva y llena de color.",
         img: "images/food-8.png",
+        originalImg: "images/recipe-8.png", 
         type: "Vegano",
         meta: "⏱ 30 min | Fácil",
         ingredients: [
@@ -219,6 +227,7 @@
         title: "Shakshuka de Tofu",
         desc: "Desayuno o cena nutritiva y especiada.",
         img: "images/food-9.png",
+        originalImg: "images/recipe-9.png", 
         type: "Vegano",
         meta: "⏱ 25 min | Fácil",
         ingredients: ["Tofu firme", "Pimientos rojos", "Tomate triturado", "Comino", "Pimentón"],
@@ -228,6 +237,7 @@
         title: "Ensalada Caprese Especial",
         desc: "Refrescante con un toque de reducción balsámica.",
         img: "images/food-10.png",
+        originalImg: "images/recipe-10.png", 
         type: "Vegetariano",
         meta: "⏱ 10 min | Muy Fácil",
         ingredients: ["Tomate", "Mozzarella fresca", "Albahaca", "Aceite Balsámico"],
@@ -237,6 +247,7 @@
         title: "Bowl de Falafel Crujiente",
         desc: "Sabor mediterráneo con falafel casero y salsa tahini.",
         img: "images/food-11.png",
+        originalImg: "images/recipe-11.png", 
         type: "Vegano",
         meta: "⏱ 20 min | Fácil",
         ingredients: ["Falafel", "Hummus", "Pepino", "Tomates cherry", "Salsa Tahini"],
@@ -246,12 +257,14 @@
         title: "Toasts de Aguacate y huevos",
         desc: "Desayuno o cena llena de proteína y grasas saludables.",
         img: "images/food-12.png",
+        originalImg: "images/recipe-12.png", 
         type: "Vegetariano",
         meta: "⏱ 15 min | Muy Fácil",
         ingredients: ["Pan integral", "Aguacate", "Huevos", "Limón", "Semillas de sésamo"],
         steps: "Tuesta el pan y unta el aguacate machacado con limón y sal. Añade huevos(previamente salteados con especias) por encima y espolvorea sésamo."
       }
     ];
+
 
     function loadRecipes(data) {
   const grid = document.getElementById('recipeGrid');
